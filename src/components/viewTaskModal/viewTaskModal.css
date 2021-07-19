@@ -1,0 +1,9 @@
+.modal-body-div p{
+    height: 3rem !important;
+    border: 1px solid rgba(0, 0, 0, 0.56);
+}
+
+.modal-body-div .todoInfo{
+    height: 9rem !important;
+    border: 1px solid rgba(0, 0, 0, 0.56);
+}

@@ -12,8 +12,9 @@ import Sidebar from "./components/sideBar/sidebar";
 import {TodoListContext} from "./contexts/todoContext";
 
 function App() {
-    const [todoData , setTodoData] = useState<Itodo[]>(fakeTodos)
-    const [tempData , setTempData] = useState<Itodo[]>(todoData)
+    const todoDataContext = useContext(TodoListContext)
+
+    const [tempData , setTempData] = useState<Itodo[]>(todoDataContext.todoList.data)
     const [addModalShow, setAddModalShow] = useState<boolean>(false)
     const [editModalShow, setEditModalShow] = useState<boolean>(false)
     const [searchText , setSearchText] = useState<string>("")
@@ -21,11 +22,11 @@ function App() {
     const [dataFilter , setDataFilter] = useState<IdataFilter>({priority:3, status:3, deadLine:3})
 
 
-    const todoL = useContext(TodoListContext)
+
 
     useEffect( ()=> {
-        setTempData(todoData)
-        let _tempData = [...todoData]
+        setTempData(todoDataContext.todoList.data)
+        let _tempData = [...todoDataContext.todoList.data]
 
         if (dataFilter.priority !=3){
             _tempData = [..._tempData.filter(item => item.priority == dataFilter.priority)]
@@ -46,17 +47,19 @@ function App() {
 
     useEffect(()=> {
         setDataFilter({priority:3, status:3, deadLine:3})
-        setTempData(todoData)
-    },[todoData])
+        setTempData(todoDataContext.todoList.data)
+    },[todoDataContext.todoList.data])
+
+
 
   return (
     <div className={"w-100 h-100"}>
-        {console.log({todoL})}
+        {console.log(todoDataContext.todoList.data)}
         <Sidebar sideBarShow={sideBarShow} setSideBarShow={setSideBarShow} dataFilter={dataFilter} setDataFilter={setDataFilter}></Sidebar>
       <div className={"header"}>
-        <Header setModalShow={setAddModalShow} modalShow={addModalShow} searchText={searchText} setSearchText={setSearchText} setTodoData={setTodoData} todoData={todoData} setSideBarShow={setSideBarShow}></Header>
+        <Header setModalShow={setAddModalShow} modalShow={addModalShow} searchText={searchText} setSearchText={setSearchText} setSideBarShow={setSideBarShow}></Header>
       </div>
-        <TodoTable todoData={tempData} setTodoData={setTodoData} searchText={searchText} editModalShow={editModalShow} setEditModalShow={setEditModalShow}></TodoTable>
+        <TodoTable todoData={tempData} searchText={searchText} editModalShow={editModalShow} setEditModalShow={setEditModalShow}></TodoTable>
         <table>
         </table>
     </div>

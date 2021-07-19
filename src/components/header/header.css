@@ -1,0 +1,33 @@
+.icon{
+    font-size: 250%;
+}
+
+.icon:hover{
+    background-color: #7f49cc;
+    cursor: pointer;
+}
+
+.searchBar-div{
+    width: 18rem;
+    height: 90%;
+    border: 0.1px solid white;
+    border-radius: 0.2rem;
+}
+
+.searchBar-div input{
+    width: 90%;
+    height: 100%;
+    padding-left: 0.5rem;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid transparent;
+    color: white;
+}
+
+.searchBar-div input::placeholder{
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.searchBar-div svg{
+    font-size: 150%;
+}

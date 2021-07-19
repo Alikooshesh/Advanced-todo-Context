@@ -1,0 +1,8 @@
+.modal-body-div input , .date-input , .modal-body-div textarea{
+    height: 3rem !important;
+    border: 1px solid rgba(0, 0, 0, 0.56);
+}
+
+.modal-body-div textarea{
+    height: 9rem !important;
+}
